@@ -23,7 +23,7 @@
 }
 
 body {
-  min-height: 100vh;
+  min-height: 50vh;
   display: grid;
   place-items: center;
   background: var(--clr-bg);
