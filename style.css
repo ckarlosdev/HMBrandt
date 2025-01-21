@@ -90,3 +90,6 @@ body {
 .neon:hover::before {
   opacity: 0.8;
 }
+
+a:visited { text-decoration: none; color:black; }
+a {text-decoration: none; }
