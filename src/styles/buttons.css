@@ -1,0 +1,14 @@
+.transition {
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.transition:hover {
+  transform: translateY(-8px); /* Elevación */
+  background-color: #f8f9fa !important; /* Cambio sutil de color */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15) !important;
+}
+
+.transition:active {
+  transform: translateY(-2px); /* Efecto de "presionado" */
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1) !important;
+}
