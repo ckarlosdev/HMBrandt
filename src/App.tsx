@@ -9,14 +9,13 @@ import useUserMe from "./hooks/useUser";
 import { CARDS_DATA } from "./types/utils";
 
 function App() {
-
   const handleNavigation = (url: string) => {
     console.log(url);
     window.location.href = url;
   };
 
   const [isLoading, setIsLoading] = useState(false);
-  const { refreshToken, logout, user: userAuth } = useAuthStore();
+  const { refreshToken, logout, user: userAuth, token } = useAuthStore();
   const { isLoading: loadingUser } = useUserMe();
 
   const handleLogout = async () => {
@@ -26,10 +25,7 @@ function App() {
         await api.post("/auth/revoke", { refreshToken });
       }
     } catch (error) {
-      console.error(
-        "Error revoking token, loging out local...",
-        error,
-      );
+      console.error("Error revoking token, loging out local...", error);
     } finally {
       logout();
       window.location.href = "https://ckarlosdev.github.io/login/";
@@ -43,8 +39,24 @@ function App() {
   // console.log("a", userAuth);
   const canAccess = (cardRoles: string[]) => {
     // Verificamos si alguno de los roles del usuario coincide con los requeridos
-    return userAuth?.roles.some(role => cardRoles.includes(role.name));
+    return userAuth?.roles.some((role) => cardRoles.includes(role.name));
   };
+
+  if (!token) {
+    return (
+      <div style={{ textAlign: "center", marginTop: "50px" }}>
+        <h4>Session expired. Redirecting to login...</h4>
+        <Button
+          variant="outline-secondary"
+          onClick={() =>
+            (window.location.href = "https://ckarlosdev.github.io/login/")
+          }
+        >
+          Go to Login
+        </Button>
+      </div>
+    );
+  }
 
   return (
     <Container fluid className="d-flex flex-column min-vh-100 p-0">
@@ -99,7 +111,9 @@ function App() {
                 <h3 className="text-center mb-5">Select a Module</h3>
 
                 <Row className="g-4 justify-content-center">
-                  {CARDS_DATA.filter(card => canAccess(card.requiredRoles)).map((modulo: any) => (
+                  {CARDS_DATA.filter((card) =>
+                    canAccess(card.requiredRoles),
+                  ).map((modulo: any) => (
                     <Col key={modulo.name} xs={12} md={6} lg={4}>
                       <Card
                         className="p-5 bg-white shadow border rounded-4 text-center hover-shadow-lg transition w-100"

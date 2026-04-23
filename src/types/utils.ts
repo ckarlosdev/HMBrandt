@@ -16,12 +16,18 @@ export const CARDS_DATA: CardItem[] = [
     name: "Issues",
     logo: shop,
     url: "https://ckarlosdev.github.io/main-issues/",
-    requiredRoles: ["ROLE_ADMIN", "ROLE_OPERATION", "ROLE_SUPERINTENDENT", "ROLE_SUPERVISOR", "ROLE_USER"],
+    requiredRoles: [
+      "ROLE_ADMIN",
+      "ROLE_OPERATION",
+      "ROLE_SUPERINTENDENT",
+      "ROLE_SUPERVISOR",
+      "ROLE_USER",
+    ],
   },
   {
     name: "Dashboard",
     logo: dashboard,
-    url: "https://ckarlosdev.github.io/Dashboard/",
+    url: "https://ckarlosdev.github.io/General-Dashboard/",
     requiredRoles: ["ROLE_ADMIN", "ROLE_OPERATION", "ROLE_SUPERINTENDENT"],
   },
   {
@@ -31,10 +37,16 @@ export const CARDS_DATA: CardItem[] = [
     requiredRoles: ["ROLE_ADMIN", "ROLE_OPERATION", "ROLE_SUPERINTENDENT"],
   },
   {
-    name: "Bider",
+    name: "Binder",
     logo: binder,
     url: "https://ckarlosdev.github.io/binder-webapp/",
-    requiredRoles: ["ROLE_ADMIN", "ROLE_OPERATION", "ROLE_SUPERINTENDENT", "ROLE_SUPERVISOR", "ROLE_USER"],
+    requiredRoles: [
+      "ROLE_ADMIN",
+      "ROLE_OPERATION",
+      "ROLE_SUPERINTENDENT",
+      "ROLE_SUPERVISOR",
+      "ROLE_USER",
+    ],
   },
   {
     name: "MDM",
